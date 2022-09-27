@@ -23,7 +23,7 @@ if (inicio == true) {
         default:
             text = "Imposible que suceda esto."
     }
-    consolidado = prompt ("Simón dice: " + aleatorioEntero)
+    consolidado = prompt ("Simón dice: " + aleatorioEntero).toUpperCase();
     consolidadoMaquina = consolidadoMaquina + aleatorio;
 }
 alert ("Perdiste, la secuencia era: " + consolidadoMaquina)
