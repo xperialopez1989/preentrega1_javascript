@@ -10,7 +10,7 @@ let jugada = [];
 let jugadaMaquina = [];
 let jugadasSesion = [];
 let nombreIngresado = "";
-let contador = 0;
+
 
 //Comienzo del juego.
 
@@ -184,6 +184,13 @@ function cargarJugada() {
   cantidadJugadas();
 };
 
+document.addEventListener("DOMContentLoaded", function () {
+  jugadasSesion = JSON.parse(localStorage.getItem("puntajesSesion"));
+  mejorPuntaje();
+  puntajePromedio();
+  cantidadJugadas();
+});
+
 //funcion para guardar nombre en local storage y escuchar el local storage al cargar sitio.
 
 function guardarNombre() {
@@ -227,11 +234,12 @@ function imprimirNombre() {
     `
   }
   function puntajePromedio() {
+    let contador = 0;
     for( let i = 0 ; i <= jugadasSesion.length - 1 ; i++) {
       contador += jugadasSesion[i]
     }
     let element = document.querySelector(".puntajePromedio");
-    element.innerHTML = `
+    return element.innerHTML = `
     <p>puntaje promedio: ${Math.round(contador / jugadasSesion.length)}</p>;
     `
   }
