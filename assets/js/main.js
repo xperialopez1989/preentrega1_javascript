@@ -1,16 +1,16 @@
 const colores = ["rojo", "verde", "azul", "amarillo"];
 
-let audioRojo = document.getElementById("audioRojo");
-let audioVerde = document.getElementById("audioVerde");
-let audioAzul = document.getElementById("audioAzul");
-let audioAmarillo = document.getElementById("audioAmarillo");
+let audios = new Object();
+audios.rojo = document.getElementById("audioRojo");
+audios.verde = document.getElementById("audioVerde");
+audios.azul = document.getElementById("audioAzul");
+audios.amarillo = document.getElementById("audioAmarillo");
+
 let click = document.querySelectorAll(".color");
 let ronda = 0;
 let jugada = [];
 let jugadaMaquina = [];
 let jugadasSesion = [];
-let nombreIngresado = "";
-
 
 //Comienzo del juego.
 
@@ -46,7 +46,7 @@ function agregarPrevioInicio() {
 
 //funcion para generar aleatorio incorporarlo al array jugadaMaquina.
 
-async function proximaSecuencia() {
+function proximaSecuencia() {
   jugada = [];
   let aleatorioEntero = colores[Math.floor(Math.random() * colores.length)];
   jugadaMaquina.push(aleatorioEntero);
@@ -58,16 +58,16 @@ async function proximaSecuencia() {
 function reproducirAudio(id) {
   switch (id) {
     case "rojo":
-      audioRojo.play();
+      audios.rojo.play();
       break;
     case "verde":
-      audioVerde.play();
+      audios.verde.play();
       break;
     case "azul":
-      audioAzul.play();
+      audios.azul.play();
       break;
     case "amarillo":
-      audioAmarillo.play();
+      audios.amarillo.play();
       break;
   }
 }
@@ -140,6 +140,9 @@ function comparar(arr1, arr2) {
       }
     });
     jugadasSesion.push(ronda);
+    mejorPuntaje();
+    cantidadJugadas();
+    puntajePromedio();
     guardarJugada();
     ronda = 0;
     jugada = [];
@@ -164,73 +167,42 @@ function comparar(arr1, arr2) {
     setTimeout(() => {
       document.querySelector("#start").classList.remove("animate__zoomOut");
     }, 6000);
-    cargarJugada();
   } else if (arr1.length == arr2.length) {
     ronda++;
     proximaSecuencia();
   }
 }
 
-// funcion para guardar jugada en local storage y escuchar el local storage al cargar sitio.
+// funcion para guardar jugada en local storage y escuchador del local storage al cargar sitio.
 
 function guardarJugada() {
-  localStorage.setItem("puntajesSesion", JSON.stringify(jugadasSesion));
-}
-
-function cargarJugada() {
-  jugadasSesion = JSON.parse(localStorage.getItem("puntajesSesion"));
-  mejorPuntaje();
-  puntajePromedio();
-  cantidadJugadas();
-};
-
-document.addEventListener("DOMContentLoaded", function () {
-  jugadasSesion = JSON.parse(localStorage.getItem("puntajesSesion"));
-  mejorPuntaje();
-  puntajePromedio();
-  cantidadJugadas();
-});
-
-//funcion para guardar nombre en local storage y escuchar el local storage al cargar sitio.
-
-function guardarNombre() {
-  localStorage.setItem("nombreJugador", nombreIngresado);
+  return localStorage.setItem("puntajesSesion", JSON.stringify(jugadasSesion));
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  nombreIngresado = localStorage.getItem("nombreJugador");
-  imprimirNombre();
-});
-
-// funcion que pregunta nombre con prompt.
-
-function preguntaNombre() {
-  nombreIngresado = prompt("Cuál es tu nombre?");
-    imprimirNombre();
-    guardarNombre();
+  jugadasSesion = JSON.parse(localStorage.getItem("puntajesSesion"));
+  if(jugadasSesion == "null") {
+    jugadasSesion = [];
+  } else {
+    ''
   }
-
-// funcion retorno ingresara nombre en pantalla
-
-function imprimirNombre() {
-  let element = document.querySelector('.nombre');
-  element.innerHTML = `
-  <p>${nombreIngresado}</p>
-  `
-}
+  mejorPuntaje();
+  cantidadJugadas();
+  puntajePromedio();
+});
 
 // funciones para imprimir estadisticas en pantalla
 
   function mejorPuntaje() {
     let element = document.querySelector(".mejorPuntaje");
       element.innerHTML = `
-    <p>mejor puntaje: ${(Math.max(...jugadasSesion))}</p>;
+    <p>mejor puntaje: ${(Math.max(...jugadasSesion))}</p>
     `
     } 
   function cantidadJugadas() {
     let element = document.querySelector(".cantidadJugadas");
     element.innerHTML = `
-    <p>cantidad jugadas: ${jugadasSesion.length}</p>;
+    <p>cantidad jugadas: ${jugadasSesion.length}</p>
     `
   }
   function puntajePromedio() {
@@ -240,7 +212,7 @@ function imprimirNombre() {
     }
     let element = document.querySelector(".puntajePromedio");
     return element.innerHTML = `
-    <p>puntaje promedio: ${Math.round(contador / jugadasSesion.length)}</p>;
+    <p>puntaje promedio: ${Math.round(contador / jugadasSesion.length)}</p>
     `
   }
 
@@ -252,7 +224,6 @@ document.querySelector(".borrarStorage").addEventListener("click", function () {
   mejorPuntaje();
   cantidadJugadas();
   puntajePromedio();
-  preguntaNombre();
 });
 
 // probando Fetch random con pokemones
@@ -273,25 +244,4 @@ fetch(url)
     ;
   })
 
-/*
-PENDIENTES
 
-- OK Crear funcion y aplicar promise a los sonidos
-- OK Reducir funcion clickPersona
-- OK Cambiar sonidos
-- OK Dar estilo
-- OK Ver de utilizar alguna libreria, si uso libreria intentar minificarla. Podria usar toastify para niveles.
-- OK Hay que utilizar FETCH.
-- OK Terminar el catch del FETCH.
-- OK Aplicar local storage para guardar jugadas, y borrar storage.
-- OK Colocar prompt de nombre solo si el storage está vacío.
-- OK Aplicar algun operador ternario.
-- OK Agrandar pokemons
--    Hacer objetos.
--    Desactivar clicks mientras se muestra jugadaMaquina NO PUDE.
--    Quitar infinity.
--    Ver de aplicar spread operator.
--    Preguntar nombre al inicio cuando no haya storage.
--    Hacer responsive.
-
-*/

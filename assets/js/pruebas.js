@@ -592,4 +592,66 @@ document.querySelector(".amarillo").addEventListener("click",function() {
  */
 
 
+//////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+// funcion que pregunta nombre con prompt.
+
+function preguntaNombre() {
+  nombreIngresado = prompt("Cuál es tu nombre?");
+    imprimirNombre();
+    guardarNombre();
+  }
+
+// funcion retorno ingresara nombre en pantalla
+
+function imprimirNombre() {
+  let element = document.querySelector('.nombre');
+  element.innerHTML = `
+  <p>${nombreIngresado}</p>
+  `
+}
+
+
+//funcion para guardar nombre en local storage y escuchar el local storage al cargar sitio.
+
+function guardarNombre() {
+  localStorage.setItem("nombreJugador", nombreIngresado);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  nombreIngresado = localStorage.getItem("nombreJugador");
+});
+
+
+
+
+/*
+PENDIENTES
+
+- OK Crear funcion y aplicar promise a los sonidos
+- OK Reducir funcion clickPersona
+- OK Cambiar sonidos
+- OK Dar estilo
+- OK Ver de utilizar alguna libreria, si uso libreria intentar minificarla. Podria usar toastify para niveles.
+- OK Hay que utilizar FETCH.
+- OK Terminar el catch del FETCH.
+- OK Aplicar local storage para guardar jugadas, y borrar storage.
+- OK Colocar prompt de nombre solo si el storage está vacío.
+- OK Aplicar algun operador ternario.
+- OK Agrandar pokemons
+- OK Hacer objetos.
+-    Desactivar clicks mientras se muestra jugadaMaquina NO PUDE.
+-    Quitar infinity.
+- OK Ver de aplicar spread operator.
+-    Hacer responsive.
+
+
+
+
+el problema sigue siendo cuando jugadaSesion hace pull a null al inicio.
+*/
 
