@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function cantidadJugadas() {
     let element = document.querySelector(".cantidadJugadas");
     element.innerHTML = `
-    <p>cantidad jugadas: ${jugadasSesion.length}</p>
+    <p>cantidad de jugadas: ${jugadasSesion.length}</p>
     `
   }
   function puntajePromedio() {

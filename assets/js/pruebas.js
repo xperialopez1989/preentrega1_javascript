@@ -644,10 +644,9 @@ PENDIENTES
 - OK Aplicar algun operador ternario.
 - OK Agrandar pokemons
 - OK Hacer objetos.
--    Desactivar clicks mientras se muestra jugadaMaquina NO PUDE.
--    Quitar infinity.
+- OK Quitar infinity.
 - OK Ver de aplicar spread operator.
+-    Desactivar clicks mientras se muestra jugadaMaquina NO PUDE.
 -    Hacer responsive.
-
 */
 

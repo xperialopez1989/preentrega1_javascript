@@ -20,14 +20,10 @@ header {
   height: 50px;
 }
 .head {
-  min-width: 200px;
+  min-width: 100px;
   width: 250px;
   margin: auto;
-}
-.nombre {
   text-align: center;
-  font-size: 2.5rem;
-  text-transform: uppercase;
 }
 p {
   font-size: 2rem;
@@ -56,8 +52,7 @@ h1 {
 #contenedorGeneral {
   height: 580px;
   color: rgb(152, 52, 52);
-  width: 80vw;
-  max-width: 600px;
+  width: 600px;
   position: relative;
   background-color: rgba(255, 255, 255, 0.7);
   margin: auto;
@@ -187,4 +182,71 @@ h1 {
   left: 200px;
   z-index: 2;
   visibility: hidden;
+}
+
+@media (max-width: 768px) {
+header {
+  height: 90px;
+  flex-flow: column wrap;
+  justify-content: center;
+}
+.head {
+  min-width: 90px;
+  height: 45px;
+}
+.head p {
+  font-size: 1.8rem;
+}
+#contenedorGeneral {
+  width: 510px;
+}
+.contenedorBotonComenzar {
+  left: 160px;
+}
+.comentarioPokemon {
+  left: 160px;
+}
+.pokemon {
+  left: 160px;
+  top: 150px;
+}
+}
+@media (max-width: 548px) {
+  .head {
+    width: 180px;
+  }
+  .head p {
+    font-size: 1.5rem;
+  }
+  h1 {
+    font-size: 3rem;
+  }
+  #contenedorGeneral {
+    width: 380px;
+    height: 420px;
+  }
+  .contenedorBotonComenzar {
+    left: 90px;
+    top: 210px;
+}
+#contenedorJuego {
+  height: 320px;
+  width: 320px;
+}
+.color {
+  height: 120px;
+  width: 120px;
+}
+h1 {
+  margin: 25px auto;
+}
+.comentarioPokemon {
+  left: 90px;
+  top: 170px;
+}
+.pokemon {
+  left: 100px;
+  top: 110px ;
+
+}
 }
