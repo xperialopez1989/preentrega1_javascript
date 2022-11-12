@@ -196,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function mejorPuntaje() {
     let element = document.querySelector(".mejorPuntaje");
       element.innerHTML = `
-    <p>mejor puntaje: ${(Math.max(...jugadasSesion))}</p>
+    <p>mejor puntaje: ${isFinite(Math.max(...jugadasSesion)) ? Math.max(...jugadasSesion) : 0 }</p>
     `
     } 
   function cantidadJugadas() {
@@ -212,7 +212,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     let element = document.querySelector(".puntajePromedio");
     return element.innerHTML = `
-    <p>puntaje promedio: ${Math.round(contador / jugadasSesion.length)}</p>
+    <p>puntaje promedio: ${isFinite(Math.round(contador / jugadasSesion.length)) ? Math.round(contador / jugadasSesion.length) : 0 }</p>
     `
   }
 

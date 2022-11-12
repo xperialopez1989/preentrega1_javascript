@@ -649,9 +649,5 @@ PENDIENTES
 - OK Ver de aplicar spread operator.
 -    Hacer responsive.
 
-
-
-
-el problema sigue siendo cuando jugadaSesion hace pull a null al inicio.
 */
 
