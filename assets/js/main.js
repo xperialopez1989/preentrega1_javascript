@@ -86,7 +86,7 @@ const delaySonido = (color) => {
 function mostrarSecuencia(arr) {
   arr.forEach((element, i) => {
     setTimeout(() => {
-      reproducirAudio(element);
+      delaySonido(element);
       prenderApagarBoton(element);
     }, (i + 1) * 400);
   });
@@ -102,7 +102,7 @@ click.forEach((element) => {
     if (puedeJugar) {
       event.preventDefault();
       let id = event.target.id;
-      reproducirAudio(id);
+      delaySonido(id);
       prenderApagarBoton(id);
       jugada.push(id);
       comparar(jugada, jugadaMaquina);
