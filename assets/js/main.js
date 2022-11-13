@@ -17,12 +17,10 @@ let jugadasSesion = [];
 document
   .querySelector("#start")
   .addEventListener("click", function comenzarJuego() {
-    document
-    .querySelector("#start")
-    .classList.add("animate__zoomOut");
+    document.querySelector("#start").classList.add("animate__zoomOut");
     quitarPrevioInicio();
     setTimeout(() => {
-      proximaSecuencia();  
+      proximaSecuencia();
     }, 500);
   });
 
@@ -95,7 +93,6 @@ function mostrarSecuencia(arr) {
 
 // escuchador que registra los clicks del jugador.
 
-
 click.forEach((element) => {
   element.addEventListener("click", (event) => {
     event.preventDefault();
@@ -106,8 +103,6 @@ click.forEach((element) => {
     comparar(jugada, jugadaMaquina);
   });
 });
-
-
 
 // funcion prender y apagar boton al hacer click
 
@@ -179,12 +174,13 @@ function guardarJugada() {
   return localStorage.setItem("puntajesSesion", JSON.stringify(jugadasSesion));
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
+  console.log("salida de llamada")
   jugadasSesion = JSON.parse(localStorage.getItem("puntajesSesion"));
-  if(jugadasSesion == "null") {
+  if (jugadasSesion = "null") {
     jugadasSesion = [];
   } else {
-    ''
+    "";
   }
   mejorPuntaje();
   cantidadJugadas();
@@ -193,28 +189,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // funciones para imprimir estadisticas en pantalla
 
-  function mejorPuntaje() {
-    let element = document.querySelector(".mejorPuntaje");
-      element.innerHTML = `
-    <p>mejor puntaje: ${isFinite(Math.max(...jugadasSesion)) ? Math.max(...jugadasSesion) : 0 }</p>
-    `
-    } 
-  function cantidadJugadas() {
-    let element = document.querySelector(".cantidadJugadas");
-    element.innerHTML = `
+function mejorPuntaje() {
+  let element = document.querySelector(".mejorPuntaje");
+  element.innerHTML = `
+    <p>mejor puntaje: ${
+      isFinite(Math.max(...jugadasSesion)) ? Math.max(...jugadasSesion) : 0
+    }</p>
+    `;
+}
+function cantidadJugadas() {
+  let element = document.querySelector(".cantidadJugadas");
+  element.innerHTML = `
     <p>cantidad de jugadas: ${jugadasSesion.length}</p>
-    `
+    `;
+}
+function puntajePromedio() {
+  let contador = 0;
+  for (let i = 0; i <= jugadasSesion.length - 1; i++) {
+    contador += jugadasSesion[i];
   }
-  function puntajePromedio() {
-    let contador = 0;
-    for( let i = 0 ; i <= jugadasSesion.length - 1 ; i++) {
-      contador += jugadasSesion[i]
-    }
-    let element = document.querySelector(".puntajePromedio");
-    return element.innerHTML = `
-    <p>puntaje promedio: ${isFinite(Math.round(contador / jugadasSesion.length)) ? Math.round(contador / jugadasSesion.length) : 0 }</p>
-    `
-  }
+  let element = document.querySelector(".puntajePromedio");
+  return (element.innerHTML = `
+    <p>puntaje promedio: ${
+      isFinite(Math.round(contador / jugadasSesion.length))
+        ? Math.round(contador / jugadasSesion.length)
+        : 0
+    }</p>
+    `);
+}
 
 // funcion borrar datos del storage
 
@@ -239,9 +241,6 @@ fetch(url)
     element.innerHTML = `
       <img src='${data.sprites.front_default}'/>
       <p>${data.name}</p>
-    `
+    `;
     document.querySelector(".pokemon img").style.width = "200px";
-    ;
-  })
-
-
+  });

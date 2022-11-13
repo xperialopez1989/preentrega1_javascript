@@ -185,31 +185,31 @@ h1 {
 }
 
 @media (max-width: 768px) {
-header {
-  height: 90px;
-  flex-flow: column wrap;
-  justify-content: center;
-}
-.head {
-  min-width: 90px;
-  height: 45px;
-}
-.head p {
-  font-size: 1.8rem;
-}
-#contenedorGeneral {
-  width: 510px;
-}
-.contenedorBotonComenzar {
-  left: 160px;
-}
-.comentarioPokemon {
-  left: 160px;
-}
-.pokemon {
-  left: 160px;
-  top: 150px;
-}
+  header {
+    height: 90px;
+    flex-flow: column wrap;
+    justify-content: center;
+  }
+  .head {
+    min-width: 90px;
+    height: 45px;
+  }
+  .head p {
+    font-size: 1.8rem;
+  }
+  #contenedorGeneral {
+    width: 510px;
+  }
+  .contenedorBotonComenzar {
+    left: 160px;
+  }
+  .comentarioPokemon {
+    left: 160px;
+  }
+  .pokemon {
+    left: 160px;
+    top: 150px;
+  }
 }
 @media (max-width: 548px) {
   .head {
@@ -228,25 +228,24 @@ header {
   .contenedorBotonComenzar {
     left: 90px;
     top: 210px;
-}
-#contenedorJuego {
-  height: 320px;
-  width: 320px;
-}
-.color {
-  height: 120px;
-  width: 120px;
-}
-h1 {
-  margin: 25px auto;
-}
-.comentarioPokemon {
-  left: 90px;
-  top: 170px;
-}
-.pokemon {
-  left: 100px;
-  top: 110px ;
-
-}
+  }
+  #contenedorJuego {
+    height: 320px;
+    width: 320px;
+  }
+  .color {
+    height: 120px;
+    width: 120px;
+  }
+  h1 {
+    margin: 25px auto;
+  }
+  .comentarioPokemon {
+    left: 90px;
+    top: 170px;
+  }
+  .pokemon {
+    left: 100px;
+    top: 110px;
+  }
 }
