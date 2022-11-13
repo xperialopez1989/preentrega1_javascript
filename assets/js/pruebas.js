@@ -646,7 +646,7 @@ PENDIENTES
 - OK Hacer objetos.
 - OK Quitar infinity.
 - OK Ver de aplicar spread operator.
--    Desactivar clicks mientras se muestra jugadaMaquina NO PUDE.
--    Hacer responsive.
+- OK Desactivar clicks mientras se muestra jugadaMaquina.
+- OK Hacer responsive.
 */
 

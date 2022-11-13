@@ -11,6 +11,7 @@ let ronda = 0;
 let jugada = [];
 let jugadaMaquina = [];
 let jugadasSesion = [];
+let puedeJugar = false;
 
 //Comienzo del juego.
 
@@ -89,18 +90,25 @@ function mostrarSecuencia(arr) {
       prenderApagarBoton(element);
     }, (i + 1) * 400);
   });
+  return setTimeout(() => {
+    puedeJugar = true;
+  }, arr.length * 400);
 }
 
 // escuchador que registra los clicks del jugador.
 
 click.forEach((element) => {
   element.addEventListener("click", (event) => {
-    event.preventDefault();
-    let id = event.target.id;
-    reproducirAudio(id);
-    prenderApagarBoton(id);
-    jugada.push(id);
-    comparar(jugada, jugadaMaquina);
+    if (puedeJugar) {
+      event.preventDefault();
+      let id = event.target.id;
+      reproducirAudio(id);
+      prenderApagarBoton(id);
+      jugada.push(id);
+      comparar(jugada, jugadaMaquina);
+    } else {
+      console.log("No puede jugar");
+    }
   });
 });
 
@@ -164,6 +172,7 @@ function comparar(arr1, arr2) {
     }, 6000);
   } else if (arr1.length == arr2.length) {
     ronda++;
+    puedeJugar = false;
     proximaSecuencia();
   }
 }
@@ -174,13 +183,12 @@ function guardarJugada() {
   return localStorage.setItem("puntajesSesion", JSON.stringify(jugadasSesion));
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  console.log("salida de llamada")
+document.addEventListener("DOMContentLoaded", function () {
   jugadasSesion = JSON.parse(localStorage.getItem("puntajesSesion"));
-  if (jugadasSesion = "null") {
+  if ((jugadasSesion = "null")) {
     jugadasSesion = [];
   } else {
-    "";
+    ("");
   }
   mejorPuntaje();
   cantidadJugadas();
