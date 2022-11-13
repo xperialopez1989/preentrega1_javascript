@@ -88,11 +88,11 @@ function mostrarSecuencia(arr) {
     setTimeout(() => {
       delaySonido(element);
       prenderApagarBoton(element);
-    }, (i + 1) * 400);
+    }, (i + 1) * 500);
   });
   return setTimeout(() => {
     puedeJugar = true;
-  }, arr.length * 400);
+  }, arr.length * 500);
 }
 
 // escuchador que registra los clicks del jugador.
